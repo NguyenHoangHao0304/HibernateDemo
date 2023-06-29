@@ -7,7 +7,9 @@ package com.hoanghao.hibernatedemo;
 
 import com.hoanghao.pojo.Product;
 import com.hoanghao.repository.ProductRepository;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import javax.persistence.Query;
 import org.hibernate.Session;
 
@@ -18,7 +20,12 @@ import org.hibernate.Session;
 public class HibernateDemo {
 
     public static void main(String[] args) {
+        Map<String,String> params = new HashMap<>();
+//        params.put("toPrice", "50000000");
+        params.put("fromPrice", "30000000");
+//        params.put("cateId", "1");
         ProductRepository pro = new ProductRepository();
-        pro.getProducts(null).forEach(p -> System.out.printf("%d - %s\n",p.getId(),p.getName()));
+        pro.getProducts(params).forEach(p -> System.out.printf("%d - %s - %.1f\n",
+                p.getId(),p.getName(),p.getPrice()));
     }
 }

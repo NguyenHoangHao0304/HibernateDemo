@@ -6,6 +6,7 @@ package com.hoanghao.repository;
 
 import com.hoanghao.hibernatedemo.HibernateUtils;
 import com.hoanghao.pojo.Product;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import javax.persistence.Query;
@@ -26,12 +27,33 @@ public class ProductRepository {
             CriteriaQuery<Product> q = b.createQuery(Product.class);
             Root root = q.from(Product.class);
             q.select(root);
+            if(params != null){
+                List<Predicate> predicates = new ArrayList<>();
+                
+                String kw = params.get("kw");
+                    if(kw != null && !kw.isEmpty())
+                    predicates.add(b.like(root.get("name"), 
+                            String.format("%%%s%%", kw)));
             
-            String kw = params.get("kw");
-            if(kw != null && !kw.isEmpty()){
-                Predicate p1 = b.like(root.get("name"), String.format("%%%s%%", kw));
-                q.where(p1);
+                String fromPrice = params.get("fromPrice");
+                    if(fromPrice != null && !fromPrice.isEmpty())
+                    predicates.add(b.greaterThanOrEqualTo(root.get("price"), 
+                            Double.parseDouble(fromPrice)));
+                    
+                String toPrice = params.get("toPrice");
+                    if(toPrice != null && !toPrice.isEmpty())
+                    predicates.add(b.lessThanOrEqualTo(root.get("price"), 
+                            Double.parseDouble(toPrice)));
+                    
+                    
+                String cateId = params.get("cateId");
+                    if(cateId != null && !cateId.isEmpty())
+                    predicates.add(b.lessThanOrEqualTo(root.get("category"), 
+                            Integer.parseInt(cateId)));
+                    
+                q.where(predicates.toArray(Predicate[]::new));
             }
+            
             q.orderBy(b.desc(root.get("id")));
             Query query = session.createQuery(q);
             return query.getResultList();
