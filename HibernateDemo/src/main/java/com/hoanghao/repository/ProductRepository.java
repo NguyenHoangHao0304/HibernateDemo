@@ -15,6 +15,7 @@ import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
 import org.hibernate.Session;
+import org.hibernate.Transaction;
 
 /**
  *
@@ -59,4 +60,28 @@ public class ProductRepository {
             return query.getResultList();
         }
     }
+    public static void addProduct(Product product) {
+        try (Session session = HibernateUtils.getFactory().openSession()) {
+            Transaction transaction = session.beginTransaction();
+            session.save(product);
+            transaction.commit();
+        }
+    }
+
+    public static void deleteProduct(Product product) {
+        try (Session session = HibernateUtils.getFactory().openSession()) {
+            Transaction transaction = session.beginTransaction();
+            session.delete(product);
+            transaction.commit();
+        }
+    }
+
+    public static void updateProduct(Product product) {
+        try (Session session = HibernateUtils.getFactory().openSession()) {
+            Transaction transaction = session.beginTransaction();
+            session.update(product);
+            transaction.commit();
+        }
+    }
+
 }
