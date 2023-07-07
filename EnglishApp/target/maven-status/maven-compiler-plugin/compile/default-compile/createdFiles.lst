@@ -1,0 +1,8 @@
+com\hoanghao\englishapp\EnglishApp.class
+com\hoanghao\service\JdbcUtils.class
+com\hoanghao\pojo\Category.class
+com\hoanghao\service\QuestionService.class
+com\hoanghao\service\ChoiceService.class
+com\hoanghao\pojo\Choice.class
+com\hoanghao\pojo\Question.class
+com\hoanghao\service\Utils.class
