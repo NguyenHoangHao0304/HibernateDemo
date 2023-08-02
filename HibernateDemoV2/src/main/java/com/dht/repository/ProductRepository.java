@@ -45,7 +45,7 @@ public class ProductRepository {
                 
                 String cateId = params.get("cateId");
                 if (cateId != null && !cateId.isEmpty()) 
-                    predicates.add(b.equal(root.get("category"), Integer.parseInt(cateId)));
+                    predicates.add(b.equal(root.get("categoryId"), Integer.parseInt(cateId)));
                 
                 q.where(predicates.toArray(Predicate[]::new));
             }

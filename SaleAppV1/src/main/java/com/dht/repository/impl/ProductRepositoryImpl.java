@@ -59,7 +59,7 @@ public class ProductRepositoryImpl implements ProductRepository {
 
             String cateId = params.get("cateId");
             if (cateId != null && !cateId.isEmpty()) {
-                predicates.add(b.lessThanOrEqualTo(root.get("category"), Integer.parseInt(cateId)));
+                predicates.add(b.lessThanOrEqualTo(root.get("categoryId"), Integer.parseInt(cateId)));
             }
 
             q.where(predicates.toArray(Predicate[]::new));

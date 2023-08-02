@@ -14,4 +14,8 @@ import java.util.Map;
  */
 public interface ProductService {
     List<Product> getProducts(Map<String, String> params);
+    int countProduct();
+    boolean addOrUpdateProduct(Product p);
+    Product getProductById(int id);
+    boolean deleteProduct(int id);
 }

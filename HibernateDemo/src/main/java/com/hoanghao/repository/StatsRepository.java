@@ -71,7 +71,6 @@ public class StatsRepository {
             if (td != null && !td.isEmpty()) {
                 predicates.add(b.lessThanOrEqualTo(rO.get("createdDate"), FORMAT.parse(td)));
             }
-            q.where(predicates.toArray(Predicate[]::new));
 
             String quarter = params.get("quarter");
             if (quarter != null && !quarter.isEmpty()) {
@@ -83,6 +82,7 @@ public class StatsRepository {
                     ));
                 }
             }
+            q.where(predicates.toArray(Predicate[]::new));
 
             q.groupBy(rP.get("id"));
 

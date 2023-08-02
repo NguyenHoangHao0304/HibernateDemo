@@ -3,7 +3,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.dht</groupId>
-    <artifactId>SaleAppV1</artifactId>
+    <artifactId>SaleAppV2</artifactId>
     <version>1.0-SNAPSHOT</version>
     <packaging>war</packaging>
 
@@ -89,11 +89,10 @@
             <scope>provided</scope>
         </dependency>
         <dependency>
-    <groupId>org.springframework</groupId>
-    <artifactId>spring-orm</artifactId>
-    <version>5.3.28</version>
-</dependency>
-
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-orm</artifactId>
+            <version>5.3.28</version>
+        </dependency>
     </dependencies>
 
     <build>
@@ -113,7 +112,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-war-plugin</artifactId>
-                <version>2.3</version>
+                <version>3.1.0</version>
                 <configuration>
                     <failOnMissingWebXml>false</failOnMissingWebXml>
                 </configuration>

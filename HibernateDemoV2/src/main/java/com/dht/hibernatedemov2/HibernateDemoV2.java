@@ -22,12 +22,12 @@ import org.hibernate.Session;
 public class HibernateDemoV2 {
 
     public static void main(String[] args) throws ParseException {
-        Map<String, String> params = new HashMap<>();
-        params.put("quarter", "1");
-        params.put("year", "2020");
-        
-        StatsRepository s = new StatsRepository();
-        s.statsRevenue(params).forEach(o -> System.out.printf("%d - %s: %d\n", o[0], o[1], o[2]));
+//        Map<String, String> params = new HashMap<>();
+//        params.put("quarter", "1");
+//        params.put("year", "2020");
+//        
+//        StatsRepository s = new StatsRepository();
+//        s.statsRevenue(params).forEach(o -> System.out.printf("%d - %s: %d\n", o[0], o[1], o[2]));
         
 //        try (Session s = HibernateUtils.getFactory().openSession()) {
 //            Query q = s.createNamedQuery("Category.findById", Category.class);
@@ -37,13 +37,13 @@ public class HibernateDemoV2 {
 //            cates.forEach(c -> System.out.println(c.getName()));
 //        }
         
-//        Map<String, String> params = new HashMap<>();
+        Map<String, String> params = new HashMap<>();
 //        params.put("fromPrice", "30000000");
 //        params.put("toPrice", "45000000");
-//        params.put("cateId", "2");
-//        
-//        ProductRepository r = new ProductRepository();
-//        r.getProducts(params).forEach(p -> System.out.printf("%d - %s - %.1f\n", p.getId(), p.getName(), p.getPrice()));
+        params.put("cateId", "2");
+        
+        ProductRepository r = new ProductRepository();
+        r.getProducts(params).forEach(p -> System.out.printf("%d - %s - %s\n", p.getId(), p.getName(), p.getPrice()));
         
 //        try (Session s = HibernateUtils.getFactory().openSession()) {
 //            Query q = s.createQuery("FROM Category");
